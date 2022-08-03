@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Heebo:wght@500&family=Mouse+Memoirs&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Advice</title>
+</head>
+<style>
+    *{
+        margin: auto;
+        text-align: center;
+        
+    }
+    h1{
+        font-family: 'Poppins', 'Baloo Bhai 2','Mouse Memoirs','Heebo', cursive ,sans-serif;
+        font-size : 2.2rem;
+    }
+    #btn{
+        font-family: 'Abril Fatface', cursive;
+    }
+   #demo{
+    font-family: 'Staatliches', cursive;
+     }
+</style>
+<body>
+    <h1>Find out what random advice is available</h1>
+    <br>
+    <br>
+    <button id="btn">Click Here</button>
+    <br>
+    <br>
+    <p id="demo"></p>
+    <script>
+        let btn=document.getElementById('btn');
+
+        btn.addEventListener("click",function(){
+            getData();
+        });
+        function getData(){
+            url="https://api.adviceslip.com/advice";
+            fetch(url).then((response)=>{
+                return response.json();
+            }).then((data)=>{
+                document.getElementById('demo').innerHTML=`<b>${data['slip'].advice}</b>`;
+            })
+        }
+    </script>
+</body>
+</html>
